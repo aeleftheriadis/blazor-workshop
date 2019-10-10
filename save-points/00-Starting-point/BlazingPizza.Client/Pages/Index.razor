@@ -20,10 +20,9 @@
             }
         }
     </ul>
-    @if (OrderState.ShowingConfigureDialog)
-    {
+    <TemplatedDialog Show="OrderState.ShowingConfigureDialog">
         <ConfigurePizzaDialog Pizza="OrderState.ConfiguringPizza" OnCancel="OrderState.CancelConfigurePizzaDialog" OnConfirm="OrderState.ConfirmConfigurePizzaDialog" />
-    }
+    </TemplatedDialog>
 </div>
 
 <div class="sidebar">
