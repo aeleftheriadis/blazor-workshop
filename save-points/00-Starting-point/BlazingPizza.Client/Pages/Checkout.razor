@@ -33,7 +33,7 @@
 </div>
 
 @code {
-
+    bool isSubmitting;
     [CascadingParameter] Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
     protected override async Task OnInitializedAsync()
@@ -41,9 +41,9 @@
         var authState = await AuthenticationStateTask;
         if (!authState.User.Identity.IsAuthenticated)
         {
-            await LocalStorage.SetAsync(JSRuntime, "currentorder", OrderState.Order);
             // The server won't accept orders from unauthenticated users, so avoid
             // an error by making them log in at this point
+            await LocalStorage.SetAsync(JSRuntime, "currentorder", OrderState.Order);
             NavigationManager.NavigateTo("user/signin?redirectUri=/checkout", true);
         }
 
@@ -77,14 +77,18 @@
     }
 
     // Leave PlaceOrder unchanged here
-
-    bool isSubmitting;
     async Task PlaceOrder()
     {
         isSubmitting = true;
-        var newOrderId = await HttpClient.PostJsonAsync<int>("orders", OrderState.Order);
-        OrderState.ResetOrder();
-        NavigationManager.NavigateTo($"myorders/{newOrderId}");
-        isSubmitting = false;
+        try
+        {
+            var newOrderId = await HttpClient.PostJsonAsync<int>("orders", OrderState.Order);
+            OrderState.ResetOrder();
+            NavigationManager.NavigateTo($"myorders/{newOrderId}");
+        }
+        finally
+        {
+            isSubmitting = false;
+        }
     }
 }
