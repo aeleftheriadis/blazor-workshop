@@ -313,11 +313,25 @@ form {
     text-align: center;
 }
 
-    .delete-item:hover {
-        text-decoration: none;
-        color: #fff2cc;
-        background-color: rgba(255,255,255,0.1);
-    }
+.delete-item:hover {
+    text-decoration: none;
+    color: #fff2cc;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.edit-item {
+    cursor: pointer;
+    color: #fff2cc;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+}
+
+.edit-item:hover {
+    text-decoration: none;
+    color: #fff2cc;
+    background-color: rgba(50,50,255,0.6);
+}
 
 .configured-pizza-item {
     display: flex;

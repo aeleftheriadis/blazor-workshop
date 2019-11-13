@@ -10,6 +10,7 @@ namespace BlazingPizza.Client
         public bool ShowingConfigureDialog { get; private set; }
 
         public Pizza ConfiguringPizza { get; private set; }
+        public bool EditExistingPizza { get; private set; }
 
         public Order Order { get; private set; } = new Order();
 
@@ -22,7 +23,14 @@ namespace BlazingPizza.Client
                 Size = Pizza.DefaultSize,
                 Toppings = new List<PizzaTopping>(),
             };
+            EditExistingPizza = false;
+            ShowingConfigureDialog = true;
+        }
 
+        public void ShowEditPizzaDialog(Pizza pizza)
+        {
+            ConfiguringPizza = pizza;
+            EditExistingPizza = true;
             ShowingConfigureDialog = true;
         }
 
