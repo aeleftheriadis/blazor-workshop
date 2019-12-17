@@ -72,7 +72,7 @@
     [Parameter] public EventCallback OnCancel { get; set; }
     [Parameter] public EventCallback OnConfirm { get; set; }
 
-    protected async override Task OnInitializedAsync()
+    protected override async Task OnInitializedAsync()
     {
     toppings = await HttpClient.GetJsonAsync<List<Topping>>("toppings");
     }
