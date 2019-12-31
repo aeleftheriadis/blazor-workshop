@@ -75,6 +75,11 @@
 
             StateHasChanged();
 
+            if (orderWithStatus.StatusText == "Delivered")
+            {
+                pollingCancellationToken.Cancel();               
+            }
+                    
             await Task.Delay(4000);
         }
     }
