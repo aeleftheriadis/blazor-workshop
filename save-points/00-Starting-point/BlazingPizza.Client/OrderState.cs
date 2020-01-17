@@ -21,7 +21,7 @@ namespace BlazingPizza.Client
                 Special = special,
                 SpecialId = special.Id,
                 Size = Pizza.DefaultSize,
-                Toppings = new List<PizzaTopping>(),
+                Toppings = new List<PizzaTopping>()
             };
             EditExistingPizza = false;
             ShowingConfigureDialog = true;
