@@ -13,7 +13,7 @@
                min="@Pizza.MinimumSize"
                max="@Pizza.MaximumSize"
                step="1"
-               @bind-value="@Pizza.Size"
+               @bind-value="Pizza.Size"
                @bind-value:event="oninput" />
         <span class="size-label">
             @(Pizza.Size)" (£@(Pizza.GetFormattedTotalPrice()))
@@ -56,11 +56,11 @@
     </div>
 </form>
 <div class="dialog-buttons">
-    <button class="btn @CancelButtonType mr-auto" @onclick="@OnCancel">@CancelButtonCaption</button>
+    <button class="btn @CancelButtonType mr-auto" @onclick="OnCancel">@CancelButtonCaption</button>
     <span class="mr-center">
         Price: <span class="price">@(Pizza.GetFormattedTotalPrice())</span>
     </span>
-    <button class="btn btn-success ml-auto" @onclick="@OnConfirm">Order ></button>
+    <button class="btn btn-success ml-auto" @onclick="OnConfirm">Order ></button>
 </div>
 
 @code {
