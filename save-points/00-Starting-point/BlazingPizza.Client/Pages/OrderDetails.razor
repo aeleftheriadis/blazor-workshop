@@ -73,12 +73,12 @@
                 Console.Error.WriteLine(ex);
             }
 
-            StateHasChanged();
-
-            if (orderWithStatus.StatusText == "Delivered")
+            if (orderWithStatus.IsDelivered)
             {
                 pollingCancellationToken.Cancel();
             }
+
+            StateHasChanged();
 
             await Task.Delay(4000);
         }
